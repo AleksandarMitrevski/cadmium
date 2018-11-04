@@ -1,0 +1,26 @@
+<div class="col-md-3 mx-auto text-center">
+  <form id="change-username-form" (keyup.enter)="onChangeUsername()">
+    <h3 class="h3 text-primary">Username</h3>
+    <input type="text" class="form-control my-1" id="inputUsername" [(ngModel)]="username" name="username" placeholder="Username" #usernameElement>
+    <div *ngIf="successUsername" class="alert alert-success mt-2 mb-1" (click)="successUsername = false">Username has been succesfully changed.</div>
+    <div *ngIf="errorsUsername.length > 0" class="alert alert-danger mt-2 mb-1">
+        <div *ngFor="let error of errorsUsername">
+          {{ error }}
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary mt-1" (click)="onChangeUsername()">Change</button>
+  </form>
+  <hr>
+  <form id="change-password-form" (keyup.enter)="onChangePassword()">
+    <h3 class="h3 text-primary">Password</h3>
+    <input type="password" class="form-control my-1" id="inputPassword" [(ngModel)]="password" name="password" placeholder="Password" #passwordElement>
+    <input type="password" class="form-control my-1" id="inputPasswordRepeat" [(ngModel)]="passwordRepeat" name="password-repeat" placeholder="Password (repeat)" #passwordRepeatElement>
+    <div *ngIf="successPassword" class="alert alert-success mt-2 mb-1" (click)="successPassword = false">Password has been succesfully changed.</div>
+    <div *ngIf="errorsPassword.length > 0" class="alert alert-danger mt-2 mb-1">
+        <div *ngFor="let error of errorsPassword">
+          {{ error }}
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary mt-1" (click)="onChangePassword()">Change</button>
+  </form>
+</div>

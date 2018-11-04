@@ -1,0 +1,4 @@
+{
+	"db_connection_string": "root:root@tcp(127.0.0.1:3306)/cadmium?parseTime=true",
+	"jwt_secret": "jwt-secret"
+}

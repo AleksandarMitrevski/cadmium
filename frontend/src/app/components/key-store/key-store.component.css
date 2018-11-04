@@ -1,0 +1,8 @@
+i#loading-spinner {
+    font-size: 36px;
+}
+
+div#pagination-container span#current-page {
+    color: #007bff;
+    padding: 0 6px;
+}

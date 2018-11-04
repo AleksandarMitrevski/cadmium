@@ -1,0 +1,21 @@
+<div class="key-container">
+  <ng-container *ngIf="mode == componentModes.Normal">
+    <span class="key-name">{{ key.name }}</span> | 
+    <span class="key-type">{{ key.type }}</span> - 
+    <span class="key-created-on">{{ formatDate(key.createdOn) }}</span>
+    <span class="key-links">
+      <ng-container *ngIf="key.type !== keyTypes.Password"> 
+        <a href (click)="onUseClick()">use</a> |
+      </ng-container>
+      <a href (click)="onRenameClick()">rename</a> |
+      <a href (click)="onDeleteClick()">delete</a>
+    </span>
+  </ng-container>
+  <ng-container *ngIf="mode == componentModes.Rename">
+    <form (keyup.enter)="onSubmitRenameClick()" (keyup.esc)="onCancelRenameClick()" class="input-group">
+      <input type="text" class="form-control" id="rename-text" name="rename-text" [(ngModel)]="renameValue">
+      <button type="button" class="btn btn-primary ml-1" (click)="onSubmitRenameClick()">Rename</button>
+      <button type="button" class="btn btn-secondary ml-1" (click)="onCancelRenameClick()">Cancel</button>
+    </form>
+  </ng-container>
+</div>

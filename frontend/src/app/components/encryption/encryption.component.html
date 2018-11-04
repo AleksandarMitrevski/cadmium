@@ -1,0 +1,27 @@
+<div class="col-md-5 mx-auto text-center">
+  <h3 class="h3 text-primary">Encryption</h3>
+  <form id="hashing-form" (keyup.enter)="onExecute()">
+    <div id="radio-buttons-key-type" class="btn-group pull-left my-1">
+      <a class="btn btn-primary active" (click)="onSelectRSA()" #radioButtonRSA>RSA</a>
+      <a class="btn btn-primary not-active" (click)="onSelectAES()" #radioButtonAES>AES</a>
+      <a class="btn btn-primary not-active" (click)="onSelectBlowfish()" #radioButtonBlowfish>Blowfish</a>
+      <a class="btn btn-primary not-active" (click)="onSelectTwofish()" #radioButtonTwofish>Twofish</a>
+    </div>
+    <div id="radio-buttons-operation" class="btn-group pull-right my-1">
+      <a class="btn btn-primary active" (click)="onSelectEncrypt()" #radioButtonEncrypt>Encrypt</a>
+      <a class="btn btn-primary not-active" (click)="onSelectDecrypt()" #radioButtonDecrypt>Decrypt</a>
+    </div>
+    <textarea class="form-control my-1" id="textareaData" [(ngModel)]="data" name="data" placeholder="Data" #textareaData></textarea>
+    <textarea class="form-control my-1" id="textareaKey" [(ngModel)]="key" name="key" placeholder="Key" (change)="onKeyChange()" #textareaKey></textarea>
+    <div *ngIf="result.length !== 0" id="results-container" class="mt-2">
+      <a href (click)="onCopyToClipboardClick()" class="pull-left">copy to clipboard</a>
+      <textarea class="form-control my-1" id="textareaResult" [(ngModel)]="result" name="result" placeholder="" readonly #textareaResult></textarea>
+    </div>
+    <div *ngIf="errors.length > 0" class="alert alert-danger mt-2 mb-1">
+        <div *ngFor="let error of errors">
+          {{ error }}
+        </div>
+    </div>
+    <button id="button-execute" type="button" class="btn btn-primary mt-1" (click)="onExecute()">Execute</button>
+  </form>
+</div>

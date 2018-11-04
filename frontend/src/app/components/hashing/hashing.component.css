@@ -1,0 +1,22 @@
+#radio-buttons-hash-function .not-active {
+    color: #007bff;
+    background-color: #fff;
+}
+
+textarea#textareaData {
+    height: 175px;
+}
+
+textarea#textareaResult {
+    height: 90px;
+}
+
+a#copy-to-clipboard {
+    color: #777;
+    font-size: 14px;
+}
+
+button#button-calculate {
+    display: block;
+    margin: 10px auto 0 auto !IMPORTANT;
+}

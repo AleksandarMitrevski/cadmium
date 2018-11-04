@@ -1,0 +1,31 @@
+<div class="col-md-3 mx-auto text-center">
+  <h3 class="h3 text-primary">{{ mode == loginModes.Login ? "Login" : "Register"}}</h3>
+  <form *ngIf="mode == loginModes.Login" id="login-form" class="text-left" (keyup.enter)="onLogin()">
+    <input type="text" class="form-control my-1" id="inputLoginUsername" [(ngModel)]="login.username" name="login-username" placeholder="Username" #loginInputUsername>
+    <input type="password" class="form-control my-1" id="inputLoginPassword" [(ngModel)]="login.password" name="login-password" placeholder="Password" #loginInputPassword>
+    <div class="form-check mt-1">
+      <input type="checkbox" name="remember-me" id="remember-me" value="remember-me" class="form-check-input" #loginInputRememberMe><label for="remember-me" id="remember-me-label" class="form-check-label">Remember me</label>
+    </div>
+    <div *ngIf="errors.length > 0" class="alert alert-danger mt-2 mb-1">
+        <div *ngFor="let error of errors">
+          {{ error }}
+        </div>
+    </div>
+    <div class="mt-1">
+      <button type="button" class="btn btn-primary" (click)="onLogin()">Login</button>
+      <button type="button" class="btn btn-secondary" (click)="switchToMode(loginModes.Register)">Register</button>
+    </div>
+  </form>
+  <form *ngIf="mode != loginModes.Login" id="register-form" (keyup.enter)="onRegister()">
+    <input type="text" class="form-control my-1" id="inputRegisterUsername" [(ngModel)]="register.username" name="register-username" placeholder="Username" #registerInputUsername>
+    <input type="password" class="form-control my-1" id="inputRegisterPassword" [(ngModel)]="register.password" name="register-password" placeholder="Password" #registerInputPassword>
+    <input type="password" class="form-control my-1" id="inputRegisterPasswordRepeat" [(ngModel)]="register.passwordRepeat" name="register-password-repeat" placeholder="Password (repeat)" #registerInputPasswordRepeat>
+    <div *ngIf="errors.length > 0" class="alert alert-danger mt-2 mb-1">
+        <div *ngFor="let error of errors">
+          {{ error }}
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary mt-1" (click)="onRegister()">Register</button>
+    <button type="button" class="btn btn-secondary mt-1" (click)="switchToMode(loginModes.Login)">Login</button>
+  </form>
+</div>

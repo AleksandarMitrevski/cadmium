@@ -1,0 +1,18 @@
+form#login-form button, form#register-form button {
+    width: 49.1%;
+}
+form#login-form button:first-of-type, form#register-form button:first-of-type {
+    margin-right: 0.8%;
+}
+form#login-form button:last-of-type, form#register-form button:last-of-type {
+    margin-left: 0.8%;
+}
+
+form#login-form input#remember-me {
+    width: 16px;
+    height: 16px;
+}
+
+form#login-form label#remember-me-label {
+    margin-left: 2px;
+}

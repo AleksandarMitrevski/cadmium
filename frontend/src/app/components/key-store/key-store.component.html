@@ -1,0 +1,20 @@
+<div class="col-md-4 mx-auto text-center">
+  <h3 class="h3 text-primary">Key Store</h3>
+  <div *ngIf="keys" id="keys-container">
+    <app-key *ngFor="let key of keys; let i = index;" [key]="key" (onUse)="onKeyUse(key)" (onRename)="onKeyRename(key, $event)" (onDelete)="onKeyDelete(key)"></app-key>
+    <span *ngIf="keys.length == 0">No keys{{ page > 1 ? " on page." : "." }}</span>
+  </div>
+  <div *ngIf="showLoadingIndicator">
+    <i id="loading-spinner" class="fa fa-spinner text-primary"></i>
+  </div>
+  <div *ngIf="errors.length > 0" class="alert alert-danger mt-2 mb-1">
+    <div *ngFor="let error of errors">
+      {{ error }}
+    </div>
+  </div>
+  <div *ngIf="!(this.errors.length !== 0 && pagesTotal === 1 && page === 1)" id="pagination-container">
+    <a *ngIf="page > 1" href (click)="onPaginationPrevClick()">&lt;</a>
+    <span id="current-page">{{ page }}</span>
+    <a *ngIf="page < pagesTotal" href (click)="onPaginationNextClick()">&gt;</a>
+  </div>
+</div>

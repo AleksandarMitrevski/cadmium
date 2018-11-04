@@ -1,0 +1,32 @@
+div.key-container {
+    margin: 7px auto;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    padding: 7px 10px;
+    text-align:left;
+    background-color: white;
+}
+
+span.key-created-on, span.key-type, span.key-links {
+    font-size: 12px;
+}
+
+span.key-links {
+    float: right;
+    position: relative;
+    top: 3px;
+    color: #797979;
+}
+
+span.key-links a {
+    color: #797979;
+    text-decoration: none;
+}
+
+span.key-links a:hover {
+    text-decoration: underline;
+}
+
+span.key-links a:first-of-type {
+    margin-left: 0;
+}

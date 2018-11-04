@@ -1,0 +1,22 @@
+<div class="col-md-5 mx-auto text-center">
+  <h3 class="h3 text-primary">Hashing</h3>
+  <form id="hashing-form" (keyup.enter)="onCalculateHash()">
+    <textarea class="form-control my-1" id="textareaData" [(ngModel)]="data" name="data" placeholder="Data to hash..."></textarea>
+    <div id="radio-buttons-hash-function" class="btn-group">
+      <a class="btn btn-primary active" (click)="onSelectSHA224()" #radioButtonSHA224>SHA-224</a>
+      <a class="btn btn-primary not-active" (click)="onSelectSHA256()" #radioButtonSHA256>SHA-256</a>
+      <a class="btn btn-primary not-active" (click)="onSelectSHA512()" #radioButtonSHA512>SHA-512</a>
+      <a class="btn btn-primary not-active" (click)="onSelectMD5()" #radioButtonMD5>MD5</a>
+    </div>
+    <div [hidden]="result.length == 0">
+      <a id="copy-to-clipboard" class="pull-left" href (click)="onCopyToClipboardClick()">copy to clipboard</a>
+      <textarea class="form-control my-1" id="textareaResult" [(ngModel)]="result" name="result" placeholder="" readonly #textareaResult></textarea>
+    </div>
+    <div *ngIf="errors.length > 0" class="alert alert-danger mt-2 mb-1">
+        <div *ngFor="let error of errors">
+          {{ error }}
+        </div>
+    </div>
+    <button id="button-calculate" type="button" class="btn btn-primary mt-1" (click)="onCalculateHash()">Calculate</button>
+  </form>
+</div>

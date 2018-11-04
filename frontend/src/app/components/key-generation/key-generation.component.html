@@ -1,0 +1,54 @@
+<div class="col-md-5 mx-auto text-center">
+  <h3 class="h3 text-primary">Key generation</h3>
+  <form id="hashing-form" (keyup.enter)="!this.persistVisible ? onGenerateKey() : onSaveKey()">
+    <div id="radio-buttons-key-type" class="btn-group">
+      <a class="btn btn-primary active" (click)="onSelectRSA()" #radioButtonRSA>RSA</a>
+      <a class="btn btn-primary not-active" (click)="onSelectAES()" #radioButtonAES>AES</a>
+      <a class="btn btn-primary not-active" (click)="onSelectBlowfish()" #radioButtonBlowfish>Blowfish</a>
+      <a class="btn btn-primary not-active" (click)="onSelectTwofish()" #radioButtonTwofish>Twofish</a>
+      <a class="btn btn-primary not-active" (click)="onSelectPassword()" #radioButtonPassword>Password</a>
+    </div>
+    <div *ngIf="selectedKeyType !== keyTypes.Password" id="container-params" class="mt-1">
+      <label for="key-size" class="text-primary">Key size:</label> 
+      <input class="form-control ml-1" type="text" name="key-size" [(ngModel)]="keySize" #inputKeySize>
+    </div>
+    <div *ngIf="selectedKeyType === keyTypes.Password" id="container-params-password" class="form-horizontal mt-1">
+        <label for="alpha-upper" class="text-primary control-label">Uppercase letters:</label>
+        <input class="form-control ml-2" type="text" name="alpha-upper" [(ngModel)]="passwordAlphaUpper" #inputAlphaUpper><br />
+        <label for="alpha-lower" class="text-primary control-label">Lowercase letters:</label>
+        <input class="form-control ml-2" type="text" name="alpha-lower" [(ngModel)]="passwordAlphaLower" #inputAlphaLower><br />
+        <label for="numeric" class="text-primary control-label">Numbers:</label>
+        <input class="form-control ml-2" type="text" name="numeric" [(ngModel)]="passwordNumeric" #inputNumeric><br />
+        <label for="special" class="text-primary control-label">Symbols:</label>
+        <input class="form-control ml-2" type="text" name="special" [(ngModel)]="passwordSpecial" #inputSpecial><br />
+    </div>
+    <div *ngIf="result.length !== 0" id="results-container" class="mt-2">
+      <div class="pull-left">
+        <a href (click)="onCopyToClipboardClick()">copy to clipboard</a> | 
+        <span *ngIf="selectedKeyType !== keyTypes.Password">
+          <a href (click)="onUseKeyClick()">use</a> |
+        </span>
+        <a href (click)="onPersistKeyClick()">persist</a>
+      </div>
+      <div *ngIf="persistVisible" id="persist-key-container" class="input-group">
+        <input class="form-control" type="text" name="key-name" [(ngModel)]="keyName" placeholder="Key name" #inputKeyName>
+        <button id="button-save-key" type="button" class="btn btn-primary ml-2" (click)="onSaveKey()" #buttonSaveKey>Save</button>
+      </div>
+      <div *ngIf="persistVisible && errorsPersistence.length > 0" class="alert alert-danger mt-2 mb-1">
+          <div *ngFor="let error of errorsPersistence">
+            {{ error }}
+          </div>
+      </div>
+      <div *ngIf="persistVisible && persistSuccessfulVisible" class="alert alert-success mt-2 mb-1">
+        Key has been saved.
+      </div>
+      <textarea class="form-control my-1" id="textareaResult" [(ngModel)]="result" name="result" placeholder="" readonly #textareaResult></textarea>
+    </div>
+    <div *ngIf="errorsGenerator.length > 0" class="alert alert-danger mt-2 mb-1">
+        <div *ngFor="let error of errorsGenerator">
+          {{ error }}
+        </div>
+    </div>
+    <button id="button-generate" type="button" class="btn btn-primary mt-1" (click)="onGenerateKey()">Generate</button>
+  </form>
+</div>

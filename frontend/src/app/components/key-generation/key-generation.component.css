@@ -1,0 +1,38 @@
+#radio-buttons-key-type .not-active {
+    color: #007bff;
+    background-color: #fff;
+}
+
+textarea#textareaResult {
+    height: 150px;
+}
+
+div#results-container, div#results-container a {
+    color: #777;
+    font-size: 14px;
+}
+
+div#results-container div {
+    font-size: 16px;
+}
+
+div#container-params input {
+    display: inline-block !IMPORTANT;
+    width: 60px !IMPORTANT;
+    max-width: 60px !IMPORTANT;
+}
+
+div#container-params-password {
+    padding-right: 25px;
+}
+
+div#container-params-password label {
+    text-align: right;
+    width: 140px;
+}
+
+div#container-params-password input {
+    display: inline-block !IMPORTANT;
+    width: 45px !IMPORTANT;
+    max-width: 45px !IMPORTANT;
+}
